@@ -19,7 +19,7 @@ export const YourMenu = () => {
   const updateDates = () => {
     const updatedDates = [];
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < weekdays.length; i++) {
       const newDate = startDate.clone().add(i, "day");
       updatedDates.push(newDate);
     }
