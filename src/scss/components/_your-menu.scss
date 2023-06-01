@@ -1,0 +1,73 @@
+.weekdays {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin-top: 20px;
+}
+.weekdays__title {
+  font-weight: 500;
+  font-family: "Gill Sans", sans-serif;
+  font-size: 60px;
+  text-align: left;
+  color: $sparkl-bg-color;
+  padding: 20px 10px 20px 10px;
+}
+.weekdays__item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.weekdays__cart {
+  font-family: "Gill Sans", sans-serif;
+  font-size: 50px;
+  background-color: $pink-bg-color;
+  padding: 10px;
+  margin: 10px;
+  width: 320px;
+  height: 200px;
+  border-radius: 10px;
+  color: white;
+}
+.weekdays__cart:hover {
+  opacity: 0.5;
+  transition: 1s ease-out;
+}
+
+.weekdays__cart:nth-child(2) {
+  background-color: $peachy-bg-color;
+}
+.weekdays__cart:nth-child(6) {
+  background-color: $peachy-bg-color;
+}
+.weekdays__cart:nth-child(3) {
+  background-color: $purple-bg-color;
+}
+.weekdays__cart:nth-child(7) {
+  background-color: $purple-bg-color;
+}
+.weekdays__cart:nth-child(4) {
+  background-color: $card-bg-color;
+}
+.weekdays__btn--next {
+  color: white;
+  background-color: $sparkl-bg-color;
+  width: 250px;
+  border: 0;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  font-weight: 500;
+  font-family: "Gill Sans", sans-serif;
+  font-size: 20px;
+  margin: 10px;
+}
+.weekdays__btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.current__day {
+  text-decoration: underline 1px;
+}
