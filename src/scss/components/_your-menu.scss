@@ -6,10 +6,10 @@
 }
 .weekdays__title {
   font-weight: 500;
-  font-family: "Gill Sans", sans-serif;
+  font-family: $font;
   font-size: 60px;
   text-align: left;
-  color: $sparkl-bg-color;
+  color: $dark;
   padding: 20px 10px 20px 10px;
 }
 .weekdays__item {
@@ -19,46 +19,34 @@
 }
 
 .weekdays__cart {
-  font-family: "Gill Sans", sans-serif;
+  font-family: $font;
   font-size: 50px;
-  background-color: $pink-bg-color;
-  padding: 10px;
+  background-color: $ligth-dark;
+  padding: 15px;
   margin: 10px;
   width: 320px;
   height: 200px;
-  border-radius: 10px;
-  color: white;
+  border-radius: 10px 50px 10px 100px;
+  color: $white;
 }
 .weekdays__cart:hover {
   opacity: 0.5;
   transition: 1s ease-out;
+  &:hover {
+    background-color: $dark-green;
+  }
 }
 
-.weekdays__cart:nth-child(2) {
-  background-color: $peachy-bg-color;
-}
-.weekdays__cart:nth-child(6) {
-  background-color: $peachy-bg-color;
-}
-.weekdays__cart:nth-child(3) {
-  background-color: $purple-bg-color;
-}
-.weekdays__cart:nth-child(7) {
-  background-color: $purple-bg-color;
-}
-.weekdays__cart:nth-child(4) {
-  background-color: $card-bg-color;
-}
 .weekdays__btn--next {
-  color: white;
-  background-color: $sparkl-bg-color;
+  color: $dark-warm;
+  background-color: $ligth;
   width: 250px;
   border: 0;
   border-radius: 10px;
   padding: 20px;
   text-align: center;
   font-weight: 500;
-  font-family: "Gill Sans", sans-serif;
+  font-family: $font;
   font-size: 20px;
   margin: 10px;
 }
@@ -69,5 +57,12 @@
 }
 
 .current__day {
-  text-decoration: underline 1px;
+  background-color: $ligth;
+  box-shadow: 0 0 30px $dark-warm;
+  h3 {
+    color: $dark;
+  }
+  p {
+    color: $dark;
+  }
 }
