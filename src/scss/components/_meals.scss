@@ -1,0 +1,89 @@
+.meals__currentdata {
+  @extend %title;
+}
+.meals__popup {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $white;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 101;
+  .meals__popup--input {
+    margin: 10px;
+    font-family: inherit;
+    width: 90%;
+    border: 0;
+    border-bottom: 2px solid $dark;
+    outline: 0;
+    font-size: 20px;
+    color: $dark;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+
+    &::placeholder {
+      color: $dark;
+      font-weight: 600;
+    }
+  }
+
+  .meals__popup--title {
+    @extend %title;
+  }
+  .meals__popup--add,
+  .meals__popup--close {
+    @extend %btn;
+  }
+}
+
+.meals {
+  .meals__add--more {
+    @extend %btn;
+  }
+  .breakfast {
+    font-family: $font;
+    font-size: 50px;
+    background-color: $dark;
+    padding: 15px;
+    width: 320px;
+    height: 150px;
+    border-radius: 30px 10px 10px 10px;
+    color: $white;
+  }
+  .lunch {
+    font-family: $font;
+    font-size: 50px;
+    background-color: $ligth-dark;
+    padding: 15px;
+    width: 320px;
+    height: 150px;
+    border-radius: 30px 10px 10px 10px;
+    color: $white;
+  }
+  .dinner {
+    font-family: $font;
+    font-size: 50px;
+    background-color: $ligth;
+    padding: 15px;
+    width: 320px;
+    height: 150px;
+    border-radius: 30px 10px 10px 10px;
+    color: $white;
+  }
+  .new {
+    font-family: $font;
+    font-size: 50px;
+    background-color: $ligth-new;
+    padding: 15px;
+    width: 320px;
+    height: 150px;
+    border-radius: 30px 10px 10px 10px;
+    color: $ligth-dark;
+  }
+}

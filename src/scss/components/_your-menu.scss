@@ -38,17 +38,7 @@
 }
 
 .weekdays__btn--next {
-  color: $dark-warm;
-  background-color: $ligth;
-  width: 250px;
-  border: 0;
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-  font-weight: 500;
-  font-family: $font;
-  font-size: 20px;
-  margin: 10px;
+  @extend %btn;
 }
 .weekdays__btns {
   display: flex;
