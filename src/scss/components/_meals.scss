@@ -36,17 +36,75 @@
   .meals__popup--title {
     @extend %title;
   }
+
   .meals__popup--add,
   .meals__popup--close {
     @extend %btn;
   }
 }
 
+.meals__window {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 60%;
+  transform: translate(-50%, -50%);
+  background-color: $white;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 101;
+}
+
+.meals__select {
+  background-color: $white;
+  width: 50%;
+  border: thin solid $dark;
+  border-radius: 4px;
+  display: inline-block;
+  line-height: 40px;
+  padding: 10px;
+  margin: 10px;
+}
+.meals__search {
+  background-color: $white;
+  width: 50%;
+  border: thin solid $dark;
+  border-radius: 4px;
+  display: inline-block;
+  line-height: 20px;
+  padding: 10px;
+  margin: 10px;
+  background-image: url("../../images/search.png");
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 30px;
+  background-size: 16px 16px;
+}
+
+.meals__window--title {
+  @extend %title;
+}
+.meals__window--choose {
+  @extend %title;
+  font-size: 20px;
+}
+.meals__window--close {
+  @extend %btn;
+}
+.meals__window--add {
+  @extend %btn;
+}
+.meals__add--dish {
+  @extend %btn;
+}
 .meals {
   .meals__add--more {
     @extend %btn;
   }
-  .breakfast {
+  .meal {
     font-family: $font;
     font-size: 50px;
     background-color: $dark;
@@ -56,7 +114,17 @@
     border-radius: 30px 10px 10px 10px;
     color: $white;
   }
-  .lunch {
+  .meal:nth-child(1) {
+    font-family: $font;
+    font-size: 50px;
+    background-color: $dark;
+    padding: 15px;
+    width: 320px;
+    height: 150px;
+    border-radius: 30px 10px 10px 10px;
+    color: $white;
+  }
+  .meal:nth-child(2) {
     font-family: $font;
     font-size: 50px;
     background-color: $ligth-dark;
@@ -66,7 +134,7 @@
     border-radius: 30px 10px 10px 10px;
     color: $white;
   }
-  .dinner {
+  .meal:nth-child(3) {
     font-family: $font;
     font-size: 50px;
     background-color: $ligth;
@@ -76,7 +144,7 @@
     border-radius: 30px 10px 10px 10px;
     color: $white;
   }
-  .new {
+  .meal:nth-child(4) {
     font-family: $font;
     font-size: 50px;
     background-color: $ligth-new;
@@ -86,4 +154,7 @@
     border-radius: 30px 10px 10px 10px;
     color: $ligth-dark;
   }
+}
+.dish {
+  @extend %title;
 }

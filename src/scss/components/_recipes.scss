@@ -1,0 +1,10 @@
+.recipes__title {
+  @extend %title;
+}
+.recipes__item {
+  display: flex;
+  flex-direction: column;
+}
+.recipes__category {
+  @extend %cart;
+}

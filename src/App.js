@@ -4,6 +4,7 @@ import { HomePage } from "./Pages/HomePage";
 import { YourMenu } from "./Components/YourMenu";
 import { Route, Routes } from "react-router-dom";
 import { Meals } from "./Components/Meals";
+import { Recipes } from "./Components/Recipes";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" exact element={<HomePage />} />
         <Route path="/yourmenu" exact element={<YourMenu />} />
         <Route path="/mealstime" exact element={<Meals />} />
+        <Route path="/recipes" exact element={<Recipes />} />
       </Routes>
     </div>
   );
