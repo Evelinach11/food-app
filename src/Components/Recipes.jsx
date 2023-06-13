@@ -7,15 +7,13 @@ export const Recipes = () => {
   return (
     <div>
       <h1 className="recipes__title">Категорії</h1>
-      <ul className="recipes__item">
-        {categories.map((category) => (
-          <li key={category}>
-            <Link to={`/category/${category}`} className="recipes__category">
-              {category}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {categories.map((category) => (
+        <div className="recipes__item" key={category}>
+          <Link to={`/category/${category}`} className="recipes__category">
+            {category}
+          </Link>
+        </div>
+      ))}
     </div>
   );
 };
