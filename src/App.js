@@ -5,6 +5,7 @@ import { YourMenu } from "./Components/YourMenu";
 import { Route, Routes } from "react-router-dom";
 import { Meals } from "./Components/Meals";
 import { Recipes } from "./Components/Recipes";
+import { CategoryRecipes } from "./Components/CategoryRecipes";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/yourmenu" exact element={<YourMenu />} />
         <Route path="/mealstime" exact element={<Meals />} />
         <Route path="/recipes" exact element={<Recipes />} />
+        <Route path="/category/:category" element={<CategoryRecipes />} />
       </Routes>
     </div>
   );

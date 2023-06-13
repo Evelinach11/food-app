@@ -4,7 +4,7 @@ import {
   addMealsTime,
   getDish,
   addDish,
-} from "../services/service";
+} from "../data-services/service";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectSelectedDay } from "../store/slices/daySlice";
