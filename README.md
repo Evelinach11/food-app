@@ -68,3 +68,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### `run image server`
+
+move to image-server - cd /image-server
+run command = "nodemon index.js"
+for testing try to open link in the browser - http://localhost:3001/user/photos/image-1686667364000.png

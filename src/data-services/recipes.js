@@ -19,7 +19,7 @@ export const recipes = [
       "Лавровий лист",
       "Зелень – за смаком",
     ],
-    photo: "../images/borsh.png",
+    photo: "http://localhost:3001/user/photos/image-1686667364000.png",
     steps: [
       "У каструлю наливаємо 1,5-2 літра води",
       "Додаємо м’ясо й ставимо на середній вогонь",
