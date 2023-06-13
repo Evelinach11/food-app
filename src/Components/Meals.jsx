@@ -8,32 +8,30 @@ import {
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectSelectedDay } from "../store/slices/daySlice";
-import moment from "moment";
 
 export const Meals = () => {
-  const [showPopup, setShowPopup] = useState(false);
-  const [showWindow, setShowWindow] = useState(false);
+  const [showPopupAddMeal, setShowPopupAddMeal] = useState(false);
+  const [showMenuOnDay, setShowMenuOnDay] = useState(false);
   const [showPopupAddDish, setShowPopupAddDish] = useState(false);
   const [newMeal, setNewMeal] = useState("");
   const [newDish, setNewDish] = useState("");
   const selectedDay = useSelector(selectSelectedDay);
   const selectedDate = selectedDay.date;
-  const formattedDate = moment(selectedDate).format("DD.MM");
 
-  const openPopup = () => {
-    setShowPopup(true);
+  const openPopupAddMeal = () => {
+    setShowPopupAddMeal(true);
   };
 
-  const closePopup = () => {
-    setShowPopup(false);
+  const closePopupAddMeal = () => {
+    setShowPopupAddMeal(false);
   };
 
-  const openWindow = () => {
-    setShowWindow(true);
+  const openMenuOnDay = () => {
+    setShowMenuOnDay(true);
   };
 
-  const closeWindow = () => {
-    setShowWindow(false);
+  const closeMenuOnDay = () => {
+    setShowMenuOnDay(false);
   };
 
   const openPopupAddDish = () => {
@@ -44,9 +42,10 @@ export const Meals = () => {
     setShowPopupAddDish(false);
   };
 
-  const handleInputChange = (event) => {
+  const handleNewMealChange = (event) => {
     setNewMeal(event.target.value);
   };
+
   const handleNewDishChange = (event) => {
     setNewDish(event.target.value);
   };
@@ -64,24 +63,22 @@ export const Meals = () => {
     <div>
       <div className="meals__currentdata">
         <p>{selectedDay.day}</p>
-        <p>{formattedDate}</p>
+        <p>{selectedDate}</p>
       </div>
-
       <div className="meals">
         {getMealsTime().map((meal, index) => (
-          <h1 className="meal" key={index} onClick={openWindow}>
+          <h1 className="meal" key={index} onClick={openMenuOnDay}>
             {meal}
           </h1>
         ))}
-
-        <div className="meals__add--more" onClick={openPopup}>
+        <div className="meals__add--more" onClick={openPopupAddMeal}>
           Додати прийом їжі
         </div>
         <div className="meals__add--dish" onClick={openPopupAddDish}>
           Додати страву
         </div>
       </div>
-      {showWindow && (
+      {showMenuOnDay && (
         <div className="meals__window">
           <div className="meals__window--title">Твоя страва</div>
           {getDish().map((dish, index) => (
@@ -89,7 +86,7 @@ export const Meals = () => {
               {dish}
             </h1>
           ))}
-          <button className="meals__window--close" onClick={closeWindow}>
+          <button className="meals__window--close" onClick={closeMenuOnDay}>
             Закрити
           </button>
         </div>
@@ -123,7 +120,7 @@ export const Meals = () => {
           </button>
         </div>
       )}
-      {showPopup && (
+      {showPopupAddMeal && (
         <div className="meals__popup">
           <h1 className="meals__popup--title">
             Назви свій прийом їжі та додай його
@@ -133,12 +130,12 @@ export const Meals = () => {
             type="text"
             placeholder="Введіть назву"
             value={newMeal}
-            onChange={handleInputChange}
+            onChange={handleNewMealChange}
           />
           <button className="meals__popup--add" onClick={addNewMeal}>
             Додати
           </button>
-          <button className="meals__popup--close" onClick={closePopup}>
+          <button className="meals__popup--close" onClick={closePopupAddMeal}>
             Закрити
           </button>
         </div>

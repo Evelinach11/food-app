@@ -15,7 +15,7 @@ export const Recipes = () => {
       <h1 className="recipes__title">Категорії</h1>
       <ul className="recipes__item">
         {categorys.map((category) => (
-          <Link to="/category" className="recipes__category">
+          <Link key={category} to="/category" className="recipes__category">
             {category}
           </Link>
         ))}
