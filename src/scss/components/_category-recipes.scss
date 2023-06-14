@@ -27,9 +27,14 @@
   left: 50%;
   transform: translateX(-50%);
 }
-// .recipe__img {
-
-// }
+.recipe__img {
+  width: 250px;
+  height: 160px;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
 .recipe__time {
   font-weight: 200;
   font-family: $font;

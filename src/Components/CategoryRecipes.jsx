@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { recipes } from "../data-services/recipes";
+import {
+  getFullImageUrl,
+  getBaseImageUrl,
+} from "../data-services/host-service";
 
 export const CategoryRecipes = () => {
   const [showRecipe, setShowRecipe] = useState(false);
@@ -15,6 +19,7 @@ export const CategoryRecipes = () => {
   const closePopupRecipe = () => {
     setShowRecipe(false);
   };
+  console.log(getBaseImageUrl());
   return (
     <div>
       <h2 className="recipe__category">{category}</h2>
@@ -29,7 +34,7 @@ export const CategoryRecipes = () => {
                 <h2 className="recipe__title">{recipe.title}</h2>
                 <img
                   className="recipe__img"
-                  src={recipe.photo}
+                  src={`${getBaseImageUrl()}${recipe.photo}`}
                   alt={recipe.title}
                 />
                 <p className="recipe__time">{recipe.time}</p>

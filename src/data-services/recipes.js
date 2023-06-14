@@ -19,7 +19,7 @@ export const recipes = [
       "Лавровий лист",
       "Зелень – за смаком",
     ],
-    photo: "http://localhost:3001/user/photos/image-1686667364000.png",
+    photo: "/user/photos/image-1686667364000.png",
     steps: [
       "У каструлю наливаємо 1,5-2 літра води",
       "Додаємо м’ясо й ставимо на середній вогонь",
@@ -40,6 +40,6 @@ export const recipes = [
     id: 2,
     title: "Салат медуза",
     category: "Салати",
-    photo: "2.jpg",
+    photo: "/user/photos/image-1686731637538.png",
   },
 ];
