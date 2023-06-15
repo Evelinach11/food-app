@@ -1,10 +1,9 @@
 export const personalRecipes = [];
-console.log(personalRecipes);
 
 export const addPersonalRecipe = (data) => {
   if (validateRecipeData(data)) {
     const id = generateId();
-    console.log(`id: ${id}`);
+    console.log(`added recipe with id: ${id}`);
     data.id = id;
     personalRecipes.push(data);
   }
@@ -24,13 +23,14 @@ export const getPersonalRecipeById = (id) => {
 
 export const getAllPersonalRecipe = () => {
   if (personalRecipes.length > 0) {
+    console.log(personalRecipes);
     return personalRecipes;
   }
   return [];
 };
 
 const generateId = () => {
-  return ++personalRecipes.length;
+  return personalRecipes.length;
 };
 
 const validateRecipeData = (data) => {

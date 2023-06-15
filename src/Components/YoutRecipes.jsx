@@ -3,7 +3,6 @@ import { getBaseImageUrl } from "../data-services/host-service";
 import {
   addPersonalRecipe,
   getAllPersonalRecipe,
-  personalRecipes,
 } from "../data-services/personal-recipe-service";
 import axios from "axios";
 
@@ -13,7 +12,6 @@ export const YourRecipes = () => {
   const [file, setFile] = useState();
   const [title, setTitle] = useState();
   const [time, setTime] = useState();
-  const [pathToPhoto, setPathToPhoto] = useState();
   const [allPersonalRecipes, setAllPersonalRecipes] = useState([]);
 
   const baseImageUrl = getBaseImageUrl();
@@ -28,30 +26,35 @@ export const YourRecipes = () => {
     axios
       .post(postImageUrl, formData)
       .then((response) => {
-        const photoName = response.data;
-        setPathToPhoto(`/user/photos/${photoName}`);
-        alert("Image success");
+        console.log("Image success");
 
         const data = {
-          pathToPhoto: pathToPhoto,
+          pathToPhoto: `/user/photos/${response.data}`,
           title: title,
           time: time,
         };
-        console.log(data);
+
         //add recipe data to array
         updatePersonalRecipe(data);
       })
       .catch((err) => {
         console.log(err, "err");
+      })
+      .finally(() => {
+        console.log("close");
+        closePopupAddYourRecipe();
       });
   };
-  console.log("test");
+
   const updatePersonalRecipe = (data) => {
     addPersonalRecipe(data);
-    console.log(allPersonalRecipes);
     setAllPersonalRecipes([...allPersonalRecipes, data]);
   };
-  console.log(allPersonalRecipes);
+
+  useEffect(() => {
+    setAllPersonalRecipes(getAllPersonalRecipe());
+  }, []);
+
   const handleFileInputChange = (e) => {
     setFile(e.target.files[0]);
   };
@@ -62,12 +65,6 @@ export const YourRecipes = () => {
   const handleTimeInputChange = (e) => {
     setTime(e.target.value);
   };
-  useEffect(() => {
-    // axios.get("http://localhost:3001/user/photos").then((response) => {
-    //   setFilenames(response.data);
-    // });
-    setAllPersonalRecipes(getAllPersonalRecipe());
-  }, []);
 
   const openPopupRecipe = () => {
     setShowRecipe(true);
@@ -98,13 +95,13 @@ export const YourRecipes = () => {
                   <img
                     className="recipe__img"
                     src={`${baseImageUrl}${recipe.pathToPhoto}`}
-                    alt="Uploaded"
+                    alt={recipe.title}
                   />
                   <p className="recipe__time">{recipe.time}</p>
                 </div>
               ))
             ) : (
-              <p>No recipes to display.</p>
+              <p>У вас немає рецептів</p>
             )}
             <button
               className="recipe__button--add"
