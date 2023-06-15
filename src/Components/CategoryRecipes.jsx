@@ -19,7 +19,8 @@ export const CategoryRecipes = () => {
   const closePopupRecipe = () => {
     setShowRecipe(false);
   };
-  console.log(getBaseImageUrl());
+
+  console.log(filterCategory);
   return (
     <div>
       <h2 className="recipe__category">{category}</h2>
@@ -44,15 +45,29 @@ export const CategoryRecipes = () => {
               <div>
                 {filterCategory.map((recipe) => (
                   <div key={recipe.id}>
-                    <img src={recipe.photo} alt={recipe.title} />
-                    {recipe.ingredients.map((ingredient) => (
+                    <div className="recipe-card">
+                      <h2 className="recipe__title">{recipe.title}</h2>
+                      <img
+                        className="recipe__img"
+                        src={`${getBaseImageUrl()}${recipe.photo}`}
+                        alt={recipe.title}
+                      />
+                      <p className="recipe__time">{recipe.time}</p>
+                    </div>
+                    {/* {recipe.ingredients.map((ingredient) => (
                       <div className="recipe__ingredients" key={ingredient}>
                         <input className="recipe__checkbox" type="checkbox" />
                         <p className="recipe__ingredient">{ingredient}</p>
                       </div>
-                    ))}
+                    ))} */}
                     <button className="recipe__button--start">
                       Почати готувати
+                    </button>
+                    <button
+                      className="recipe__button--start"
+                      onClick={closePopupRecipe}
+                    >
+                      Закрити
                     </button>
                   </div>
                 ))}

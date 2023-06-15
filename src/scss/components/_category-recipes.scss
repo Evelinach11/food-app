@@ -66,3 +66,7 @@
 .recipe__button--start {
   @extend %btn;
 }
+.recipe__button--add {
+  @extend %btn;
+  margin: 20px;
+}
