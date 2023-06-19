@@ -56,8 +56,16 @@ export const YourRecipes = () => {
   };
 
   const deleteRecipe = () => {
-    deletePersonalRecipe(currentId);
-    setAllPersonalRecipes(deleteElementById(allPersonalRecipes, currentId));
+    try {
+      deletePersonalRecipe(currentId);
+      setAllPersonalRecipes(deleteElementById(allPersonalRecipes, currentId));
+    } catch {
+      console.log(
+        `something went wrong during removing elem with id ${currentId}`
+      );
+    } finally {
+      closePopupDeleteYourRecipe();
+    }
   };
 
   useEffect(() => {
@@ -109,10 +117,10 @@ export const YourRecipes = () => {
 
                     <img
                       onClick={() => {
-                        console.log(recipe);
                         openPopupDeleteYourRecipe(recipe.id);
                       }}
-                      src="../images/delete.png"
+                      src="./functional-icon/delete.png"
+                      alt="delete icon"
                     />
                   </h2>
                   <img
@@ -125,7 +133,7 @@ export const YourRecipes = () => {
                 </div>
               ))
             ) : (
-              <p>У вас немає рецептів</p>
+              <p className="recipe__norecipe">У вас немає рецептів</p>
             )}
             <button
               className="recipe__button--add"
@@ -138,7 +146,6 @@ export const YourRecipes = () => {
           showRecipe && (
             <div>
               <div>
-                <img />
                 <div className="recipe__ingredients">
                   <input className="recipe__checkbox" type="checkbox" />
                   <p className="recipe__ingredient"></p>
@@ -162,22 +169,18 @@ export const YourRecipes = () => {
         <div className="your__recipes--popup">
           <div>
             <form onSubmit={handleSubmit}>
+              <input type="file" onChange={handleFileInputChange} />
               <input
-                className="images-input"
-                type="file"
-                onChange={handleFileInputChange}
-              />
-              <input
-                className="title-input"
                 type="text"
+                placeholder="Назва"
                 onChange={handleTitleInputChange}
               />
               <input
-                className="time-input"
+                placeholder="Час для приготування"
                 type="text"
                 onChange={handleTimeInputChange}
               />
-              <button className="btn" type="submit">
+              <button className="recipe__btn" type="submit">
                 Додати рецепт
               </button>
             </form>
@@ -193,9 +196,18 @@ export const YourRecipes = () => {
       {showDeleteRecipe && (
         <div>
           <div className="your__recipes--popup">
-            <h2>Ви дійсно хочете видалити цей рецепт?</h2>
-            <button onClick={deleteRecipe}>Так</button>
-            <button onClick={closePopupDeleteYourRecipe}>Закрити</button>
+            <h2 className="recipe__delete">
+              Ви дійсно хочете видалити цей рецепт?
+            </h2>
+            <button className="recipe__delete--btn" onClick={deleteRecipe}>
+              Так
+            </button>
+            <button
+              className="recipe__delete--btn"
+              onClick={closePopupDeleteYourRecipe}
+            >
+              Закрити
+            </button>
           </div>
         </div>
       )}
