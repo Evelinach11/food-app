@@ -6,7 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import { Meals } from "./Components/Meals";
 import { Recipes } from "./Components/Recipes";
 import { CategoryRecipes } from "./Components/CategoryRecipes";
-import { YourRecipes } from "./Components/YoutRecipes";
+import { YourRecipes } from "./Components/YourRecipes";
 
 function App() {
   return (
