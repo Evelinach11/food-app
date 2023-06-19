@@ -1,15 +1,19 @@
 import { useState, useEffect } from "react";
 import { getBaseImageUrl } from "../data-services/host-service";
+import { deleteElementById } from "../utils/array-util";
 import {
   addPersonalRecipe,
   getAllPersonalRecipe,
+  deletePersonalRecipe,
 } from "../data-services/personal-recipe-service";
 import axios from "axios";
 
 export const YourRecipes = () => {
   const [showRecipe, setShowRecipe] = useState(false);
+  const [showDeleteRecipe, setShowDeleteRecipe] = useState(false);
   const [showAddRecipe, setShowAddRecipe] = useState(false);
   const [file, setFile] = useState();
+  const [currentId, setCurrentId] = useState();
   const [title, setTitle] = useState();
   const [time, setTime] = useState();
   const [allPersonalRecipes, setAllPersonalRecipes] = useState([]);
@@ -48,7 +52,12 @@ export const YourRecipes = () => {
 
   const updatePersonalRecipe = (data) => {
     addPersonalRecipe(data);
-    setAllPersonalRecipes([...allPersonalRecipes, data]);
+    setAllPersonalRecipes(getAllPersonalRecipe());
+  };
+
+  const deleteRecipe = () => {
+    deletePersonalRecipe(currentId);
+    setAllPersonalRecipes(deleteElementById(allPersonalRecipes, currentId));
   };
 
   useEffect(() => {
@@ -79,6 +88,14 @@ export const YourRecipes = () => {
   const closePopupAddYourRecipe = () => {
     setShowAddRecipe(false);
   };
+  const openPopupDeleteYourRecipe = (id) => {
+    setCurrentId(id);
+    setShowDeleteRecipe(true);
+  };
+  const closePopupDeleteYourRecipe = () => {
+    setShowDeleteRecipe(false);
+  };
+
   return (
     <div>
       <div>
@@ -86,13 +103,20 @@ export const YourRecipes = () => {
           <div>
             {allPersonalRecipes.length > 0 ? (
               allPersonalRecipes.map((recipe) => (
-                <div
-                  key={recipe.id}
-                  className="recipe-card"
-                  onClick={openPopupRecipe}
-                >
-                  <h2 className="recipe__title">{recipe.title}</h2>
+                <div key={recipe.id} className="recipe-card">
+                  <h2 className="recipe__title">
+                    {recipe.title}
+
+                    <img
+                      onClick={() => {
+                        console.log(recipe);
+                        openPopupDeleteYourRecipe(recipe.id);
+                      }}
+                      src="../images/delete.png"
+                    />
+                  </h2>
                   <img
+                    onClick={openPopupRecipe}
                     className="recipe__img"
                     src={`${baseImageUrl}${recipe.pathToPhoto}`}
                     alt={recipe.title}
@@ -115,7 +139,6 @@ export const YourRecipes = () => {
             <div>
               <div>
                 <img />
-
                 <div className="recipe__ingredients">
                   <input className="recipe__checkbox" type="checkbox" />
                   <p className="recipe__ingredient"></p>
@@ -164,6 +187,15 @@ export const YourRecipes = () => {
             >
               Закрити
             </button>
+          </div>
+        </div>
+      )}
+      {showDeleteRecipe && (
+        <div>
+          <div className="your__recipes--popup">
+            <h2>Ви дійсно хочете видалити цей рецепт?</h2>
+            <button onClick={deleteRecipe}>Так</button>
+            <button onClick={closePopupDeleteYourRecipe}>Закрити</button>
           </div>
         </div>
       )}

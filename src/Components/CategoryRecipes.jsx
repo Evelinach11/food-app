@@ -20,7 +20,6 @@ export const CategoryRecipes = () => {
     setShowRecipe(false);
   };
 
-  console.log(filterCategory);
   return (
     <div>
       <h2 className="recipe__category">{category}</h2>

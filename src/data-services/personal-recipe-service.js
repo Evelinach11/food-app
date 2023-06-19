@@ -1,4 +1,5 @@
-export const personalRecipes = [];
+import { deleteElementById } from "../utils/array-util";
+export let personalRecipes = [];
 
 export const addPersonalRecipe = (data) => {
   if (validateRecipeData(data)) {
@@ -10,20 +11,17 @@ export const addPersonalRecipe = (data) => {
 };
 
 export const deletePersonalRecipe = (id) => {
-  if (personalRecipes.length > 0) {
-    //  TODO delete elem by id
-  }
+  personalRecipes = deleteElementById(personalRecipes, id);
 };
 
 export const getPersonalRecipeById = (id) => {
   if (personalRecipes.length > 0) {
-    //  TODO get elem by id
+    return personalRecipes.find((recipe) => recipe.id === id);
   }
 };
 
 export const getAllPersonalRecipe = () => {
   if (personalRecipes.length > 0) {
-    console.log(personalRecipes);
     return personalRecipes;
   }
   return [];
