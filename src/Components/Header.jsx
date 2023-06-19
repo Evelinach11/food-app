@@ -4,14 +4,14 @@ export const Header = () => {
   return (
     <div>
       <header className="header">
-        <Link to="/" className="header-link">
-          Твоє меню
+        <Link to="/yourrecipes" className="header-link">
+          Твої рецепти
         </Link>
         <Link to="/recipes" className="header-link">
           Рецепти
         </Link>
-        <Link to="/yourrecipes" className="header-link">
-          Твої рецепти
+        <Link to="/yourmenu" className="header-link">
+          Твоє меню
         </Link>
       </header>
     </div>

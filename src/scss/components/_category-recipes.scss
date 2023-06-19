@@ -1,0 +1,72 @@
+.recipe__category {
+  @extend %title;
+}
+.recipe-card {
+  position: relative;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(1fr, 1fr, 1fr, 1fr);
+  grid-gap: 20px;
+  cursor: pointer;
+  background-color: $ligth;
+  width: 250px;
+  height: 250px;
+  margin: 20px;
+}
+.recipe__title {
+  font-weight: 500;
+  font-family: $font;
+  font-size: 60px;
+  text-align: left;
+  color: $dark;
+  width: 250px;
+  border-radius: 10px 10px 0px 0px;
+  background-color: $white;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.recipe__img {
+  width: 250px;
+  height: 160px;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.recipe__time {
+  font-weight: 200;
+  font-family: $font;
+  font-size: 30px;
+  text-align: left;
+  color: $dark;
+  width: 250px;
+  border-radius: 0px 0px 10px 10px;
+  background-color: $white;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.recipe__ingredients {
+  display: flex;
+  flex-direction: row;
+  padding: 3px;
+}
+.recipe__ingredient {
+  font-weight: 200;
+  font-family: $font;
+  font-size: 20px;
+  text-align: left;
+  color: $dark;
+  padding: 5px;
+}
+
+.recipe__button--start {
+  @extend %btn;
+}
+.recipe__button--add {
+  @extend %btn;
+  margin: 20px;
+}

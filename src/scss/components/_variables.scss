@@ -1,1 +1,43 @@
-$ligth-color: #f2e3db;
+$dark: #a75d5d;
+$dark-green: #16697a;
+$dark-warm: #a84448;
+$ligth-dark: #d3756b;
+$ligth-warm: #f0997d;
+$ligth: #ffc3a1;
+$ligth-new: #fff4e0;
+$white: #f7f7f7;
+$font: "Gill Sans", sans-serif;
+
+%title {
+  font-weight: 500;
+  font-family: $font;
+  font-size: 60px;
+  text-align: left;
+  color: $dark;
+  padding: 20px 10px 20px 10px;
+}
+
+%btn {
+  color: $dark-warm;
+  background-color: $ligth;
+  width: 250px;
+  border: 0;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  font-weight: 500;
+  font-family: $font;
+  font-size: 20px;
+  margin: 10px;
+  cursor: pointer;
+}
+%cart {
+  font-family: $font;
+  font-size: 25px;
+  background-color: $ligth-dark;
+  padding: 15px;
+  margin: 15px;
+  width: 300px;
+  border-radius: 10px 50px 10px 10px;
+  color: $white;
+}

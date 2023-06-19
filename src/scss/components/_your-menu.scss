@@ -1,0 +1,58 @@
+.weekdays {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin-top: 20px;
+}
+.weekdays__title {
+  font-weight: 500;
+  font-family: $font;
+  font-size: 60px;
+  text-align: left;
+  color: $dark;
+  padding: 20px 10px 20px 10px;
+}
+.weekdays__item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.weekdays__cart {
+  font-family: $font;
+  font-size: 50px;
+  background-color: $ligth-dark;
+  padding: 15px;
+  margin: 10px;
+  width: 320px;
+  height: 200px;
+  border-radius: 10px 50px 10px 100px;
+  color: $white;
+}
+.weekdays__cart:hover {
+  opacity: 0.5;
+  transition: 1s ease-out;
+  &:hover {
+    background-color: $dark-green;
+  }
+}
+
+.weekdays__btn--next {
+  @extend %btn;
+}
+.weekdays__btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.current__day {
+  background-color: $ligth;
+  box-shadow: 0 0 30px $dark-warm;
+  h3 {
+    color: $dark;
+  }
+  p {
+    color: $dark;
+  }
+}
