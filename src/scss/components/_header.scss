@@ -20,11 +20,16 @@
 }
 
 .lang__icon {
-  height: 50px;
-  line-height: 50px;
+  margin: 12px;
+}
+
+.lang__div {
+  position: relative;
+  right: 240px;
 }
 
 .lang__select {
+  margin: 10px;
   background-color: $white;
   border: thin solid $dark;
   border-radius: 4px;

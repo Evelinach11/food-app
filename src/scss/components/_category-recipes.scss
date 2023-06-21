@@ -70,3 +70,14 @@
   @extend %btn;
   margin: 20px;
 }
+.start__cook--popup {
+  @extend %popUp;
+}
+.recipe__ingredient--title {
+  font-weight: 200;
+  font-family: $font;
+  font-size: 30px;
+  text-align: left;
+  color: $dark;
+  margin-bottom: 10px;
+}

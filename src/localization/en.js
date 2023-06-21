@@ -20,5 +20,7 @@ const translationEn = {
   yes: "Yes",
   delete: "Are you sure you want to delete this recipe?",
   noRecipe: "You have no recipes",
+  titleForStart: "If you have all ingredients you ready to start",
+  ingredients: "Ingredients",
 };
 export default translationEn;

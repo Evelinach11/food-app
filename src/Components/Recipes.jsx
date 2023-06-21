@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { getCategories } from "../data-services/categoties";
+import { getCategories } from "../data-services/categories";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import { useTranslation } from "react-i18next";

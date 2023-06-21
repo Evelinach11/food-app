@@ -50,30 +50,31 @@ export const Header = () => {
         <Link to="/yourmenu" className="header-link">
           {t("yourMenu")}
         </Link>
-
-        {showPopupLang === false ? (
-          <img
-            src="/functional-icon/language-exchange.png"
-            className="lang__icon"
-            onClick={openPopupLang}
-            alt="Language Icon"
-          />
-        ) : (
-          <div className="lang__popup">
-            <select
-              onChange={onChange}
-              value={selectedLanguage}
-              className="lang__select"
-            >
-              <option value="ua" className="lang__option">
-                Ua
-              </option>
-              <option value="en" className="lang__option">
-                En
-              </option>
-            </select>
-          </div>
-        )}
+        <div className="lang__div">
+          {showPopupLang === false ? (
+            <img
+              src="/functional-icon/arrow-right.png"
+              className="lang__icon"
+              onClick={openPopupLang}
+              alt="Language Icon"
+            />
+          ) : (
+            <div className="lang__popup">
+              <select
+                onChange={onChange}
+                value={selectedLanguage}
+                className="lang__select"
+              >
+                <option value="ua" className="lang__option">
+                  Ua
+                </option>
+                <option value="en" className="lang__option">
+                  En
+                </option>
+              </select>
+            </div>
+          )}
+        </div>
       </header>
     </div>
   );

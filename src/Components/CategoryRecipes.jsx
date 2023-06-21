@@ -20,6 +20,7 @@ i18n.use(initReactI18next).init({
 
 export const CategoryRecipes = () => {
   const [showRecipe, setShowRecipe] = useState(false);
+  const [showStartCook, setShowStartCook] = useState(false);
   const { category } = useParams();
   const { t } = useTranslation();
 
@@ -32,6 +33,14 @@ export const CategoryRecipes = () => {
 
   const closePopupRecipe = () => {
     setShowRecipe(false);
+  };
+
+  const openPopupStartCook = () => {
+    setShowStartCook(true);
+  };
+
+  const closePopupStartCook = () => {
+    setShowStartCook(false);
   };
 
   return (
@@ -67,13 +76,11 @@ export const CategoryRecipes = () => {
                       />
                       <p className="recipe__time">{recipe.time}</p>
                     </div>
-                    {/* {recipe.ingredients.map((ingredient) => (
-                      <div className="recipe__ingredients" key={ingredient}>
-                        <input className="recipe__checkbox" type="checkbox" />
-                        <p className="recipe__ingredient">{ingredient}</p>
-                      </div>
-                    ))} */}
-                    <button className="recipe__button--start">
+
+                    <button
+                      onClick={openPopupStartCook}
+                      className="recipe__button--start"
+                    >
                       {t("startCooking")}
                     </button>
                     <button
@@ -82,6 +89,31 @@ export const CategoryRecipes = () => {
                     >
                       {t("close")}
                     </button>
+                    {showStartCook && (
+                      <div className="start__cook--popup">
+                        <h2 className="recipe__ingredient--title">
+                          {t("ingredients")}
+                        </h2>
+                        {recipe.ingredients.map((ingredient) => (
+                          <div
+                            className="recipe__ingredients"
+                            key={ingredient.id}
+                          >
+                            <input
+                              className="recipe__checkbox"
+                              type="checkbox"
+                            />
+                            <p className="recipe__ingredient">{`${ingredient.name} ${ingredient.count} ${ingredient.typeOfCount}`}</p>
+                          </div>
+                        ))}
+                        <p className="recipe__ingredient--title">
+                          {t("titleForStart")}
+                        </p>
+                        <button className="recipe__button--start">
+                          {t("startCooking")}
+                        </button>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

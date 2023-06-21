@@ -20,5 +20,7 @@ const translationUa = {
   yes: "Так",
   delete: "Ви дійсно хочете видалити цей рецепт?",
   noRecipe: "У вас немає рецептів",
+  titleForStart: "Якщо у вас є всі інгредієнти, ви готові почати",
+  ingredients: "Інгредієнти",
 };
 export default translationUa;

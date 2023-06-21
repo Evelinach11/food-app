@@ -41,3 +41,17 @@ $font: "Gill Sans", sans-serif;
   border-radius: 10px 50px 10px 10px;
   color: $white;
 }
+%popUp {
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  transform: translate(-50%, -50%);
+  background-color: $white;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 101;
+}
