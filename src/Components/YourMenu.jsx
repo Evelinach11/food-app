@@ -3,6 +3,21 @@ import { useDispatch } from "react-redux";
 import { addSelectedDay } from "../store/slices/daySlice";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import { useTranslation } from "react-i18next";
+import translationEn from "../localization/en";
+import translationUa from "../localization/ua";
+
+i18n.use(initReactI18next).init({
+  resources: {
+    en: { translation: translationEn },
+    ua: { translation: translationUa },
+  },
+  lng: "ua",
+  fallbackLang: "ua",
+  interpolation: { escapeValue: "false" },
+});
 
 export const YourMenu = () => {
   const initialStartDate = moment().startOf("isoWeek");
@@ -10,6 +25,7 @@ export const YourMenu = () => {
   const [dates, setDates] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const dayOfWeek = [
     "Понеділок",
@@ -61,7 +77,7 @@ export const YourMenu = () => {
 
   return (
     <div className="weekdays">
-      <h1 className="weekdays__title">Додай своє меню на ці дні</h1>
+      <h1 className="weekdays__title">{t("addMenu")}</h1>
       <div className="weekdays__item">
         {dayOfWeek.map((day, index) => (
           <div
@@ -78,10 +94,10 @@ export const YourMenu = () => {
       </div>
       <div className="weekdays__btns">
         <button className="weekdays__btn--next" onClick={handlePrevWeek}>
-          Попередній тиждень
+          {t("previousWeek")}
         </button>
         <button className="weekdays__btn--next" onClick={handleNextWeek}>
-          Наступний тиждень
+          {t("nextWeek")}
         </button>
       </div>
     </div>

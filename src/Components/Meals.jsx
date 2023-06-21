@@ -8,6 +8,21 @@ import {
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectSelectedDay } from "../store/slices/daySlice";
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import { useTranslation } from "react-i18next";
+import translationEn from "../localization/en";
+import translationUa from "../localization/ua";
+
+i18n.use(initReactI18next).init({
+  resources: {
+    en: { translation: translationEn },
+    ua: { translation: translationUa },
+  },
+  lng: "ua",
+  fallbackLang: "ua",
+  interpolation: { escapeValue: "false" },
+});
 
 export const Meals = () => {
   const [showPopupAddMeal, setShowPopupAddMeal] = useState(false);
@@ -17,6 +32,7 @@ export const Meals = () => {
   const [newDish, setNewDish] = useState("");
   const selectedDay = useSelector(selectSelectedDay);
   const selectedDate = selectedDay.date;
+  const { t } = useTranslation();
 
   const openPopupAddMeal = () => {
     setShowPopupAddMeal(true);
@@ -72,31 +88,29 @@ export const Meals = () => {
           </h1>
         ))}
         <div className="meals__add--more" onClick={openPopupAddMeal}>
-          Додати прийом їжі
+          {t("addMeal")}
         </div>
         <div className="meals__add--dish" onClick={openPopupAddDish}>
-          Додати страву
+          {t("addDish")}
         </div>
       </div>
       {showMenuOnDay && (
         <div className="meals__window">
-          <div className="meals__window--title">Твоя страва</div>
+          <div className="meals__window--title">{t("yourDish")}</div>
           {getDish().map((dish, index) => (
             <h1 className="dish" key={index}>
               {dish}
             </h1>
           ))}
           <button className="meals__window--close" onClick={closeMenuOnDay}>
-            Закрити
+            {t("close")}
           </button>
         </div>
       )}
       {showPopupAddDish && (
         <div className="meals__window">
-          <div className="meals__window--title">Додай страву</div>
-          <h2 className="meals__window--choose">
-            До якого прийому їжі ти хочеш додати цю страву?
-          </h2>
+          <div className="meals__window--title"> {t("addDish")}</div>
+          <h2 className="meals__window--choose">{t("chooseMeal")}</h2>
           <input
             className="meals__search"
             type="search"
@@ -113,30 +127,28 @@ export const Meals = () => {
             ))}
           </select>
           <button className="meals__window--add" onClick={addNewDish}>
-            Додати
+            {t("add")}
           </button>
           <button className="meals__window--close" onClick={closePopupAddDish}>
-            Закрити
+            {t("close")}
           </button>
         </div>
       )}
       {showPopupAddMeal && (
         <div className="meals__popup">
-          <h1 className="meals__popup--title">
-            Назви свій прийом їжі та додай його
-          </h1>
+          <h1 className="meals__popup--title">{t("nameAddMealTitle")}</h1>
           <input
             className="meals__popup--input"
             type="text"
-            placeholder="Введіть назву"
+            placeholder={t("enterName")}
             value={newMeal}
             onChange={handleNewMealChange}
           />
           <button className="meals__popup--add" onClick={addNewMeal}>
-            Додати
+            {t("add")}
           </button>
           <button className="meals__popup--close" onClick={closePopupAddMeal}>
-            Закрити
+            {t("close")}
           </button>
         </div>
       )}

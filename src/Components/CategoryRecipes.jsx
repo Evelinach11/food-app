@@ -1,14 +1,28 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { recipes } from "../data-services/recipes";
-import {
-  getFullImageUrl,
-  getBaseImageUrl,
-} from "../data-services/host-service";
+import { getBaseImageUrl } from "../data-services/host-service";
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import { useTranslation } from "react-i18next";
+import translationEn from "../localization/en";
+import translationUa from "../localization/ua";
+
+i18n.use(initReactI18next).init({
+  resources: {
+    en: { translation: translationEn },
+    ua: { translation: translationUa },
+  },
+  lng: "ua",
+  fallbackLang: "ua",
+  interpolation: { escapeValue: "false" },
+});
 
 export const CategoryRecipes = () => {
   const [showRecipe, setShowRecipe] = useState(false);
   const { category } = useParams();
+  const { t } = useTranslation();
+
   const filterCategory = recipes.filter(
     (recipe) => recipe.category === category
   );
@@ -60,13 +74,13 @@ export const CategoryRecipes = () => {
                       </div>
                     ))} */}
                     <button className="recipe__button--start">
-                      Почати готувати
+                      {t("startCooking")}
                     </button>
                     <button
                       className="recipe__button--start"
                       onClick={closePopupRecipe}
                     >
-                      Закрити
+                      {t("close")}
                     </button>
                   </div>
                 ))}
