@@ -7,6 +7,21 @@ import {
   deletePersonalRecipe,
 } from "../data-services/personal-recipe-service";
 import axios from "axios";
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import { useTranslation } from "react-i18next";
+import translationEn from "../localization/en";
+import translationUa from "../localization/ua";
+
+i18n.use(initReactI18next).init({
+  resources: {
+    en: { translation: translationEn },
+    ua: { translation: translationUa },
+  },
+  lng: "ua",
+  fallbackLang: "ua",
+  interpolation: { escapeValue: "false" },
+});
 
 export const YourRecipes = () => {
   const [showRecipe, setShowRecipe] = useState(false);
@@ -17,6 +32,7 @@ export const YourRecipes = () => {
   const [title, setTitle] = useState();
   const [time, setTime] = useState();
   const [allPersonalRecipes, setAllPersonalRecipes] = useState([]);
+  const { t } = useTranslation();
 
   const baseImageUrl = getBaseImageUrl();
 
@@ -133,13 +149,13 @@ export const YourRecipes = () => {
                 </div>
               ))
             ) : (
-              <p className="recipe__norecipe">У вас немає рецептів</p>
+              <p className="recipe__norecipe">{t("noRecipe")}</p>
             )}
             <button
               className="recipe__button--add"
               onClick={openPopupAddYourRecipe}
             >
-              Додати свій рецепт
+              {t("addYourRecipe")}
             </button>
           </div>
         ) : (
@@ -152,13 +168,13 @@ export const YourRecipes = () => {
                 </div>
 
                 <button className="recipe__button--start">
-                  Почати готувати
+                  {t("startCooking")}
                 </button>
                 <button
                   className="recipe__button--start"
                   onClick={closePopupRecipe}
                 >
-                  Закрити
+                  {t("close")}
                 </button>
               </div>
             </div>
@@ -181,14 +197,14 @@ export const YourRecipes = () => {
                 onChange={handleTimeInputChange}
               />
               <button className="recipe__btn" type="submit">
-                Додати рецепт
+                {t("addYourRecipe")}
               </button>
             </form>
             <button
               className="recipe__button--start"
               onClick={closePopupAddYourRecipe}
             >
-              Закрити
+              {t("close")}
             </button>
           </div>
         </div>
@@ -196,17 +212,15 @@ export const YourRecipes = () => {
       {showDeleteRecipe && (
         <div>
           <div className="your__recipes--popup">
-            <h2 className="recipe__delete">
-              Ви дійсно хочете видалити цей рецепт?
-            </h2>
+            <h2 className="recipe__delete">{t("delete")}</h2>
             <button className="recipe__delete--btn" onClick={deleteRecipe}>
-              Так
+              {t("yes")}
             </button>
             <button
               className="recipe__delete--btn"
               onClick={closePopupDeleteYourRecipe}
             >
-              Закрити
+              {t("close")}
             </button>
           </div>
         </div>

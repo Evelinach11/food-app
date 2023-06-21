@@ -18,3 +18,14 @@
   opacity: 0.5;
   transition: 0.5s;
 }
+
+.lang__icon {
+  height: 50px;
+  line-height: 50px;
+}
+
+.lang__select {
+  background-color: $white;
+  border: thin solid $dark;
+  border-radius: 4px;
+}
